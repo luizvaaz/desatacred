@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DESATACRED — RECUPERAÇÃO DE CRÉDITO</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Work+Sans:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --black: #0a0b0b;
+    --black-2: #111312;
+    --black-card: #141615;
+    --black-line: #2a2d2c;
+    --brass: #c9a15a;
+    --brass-soft: #dfc189;
+    --white: #f4f2ec;
+    --white-dim: #a9aeaa;
+    --line-gold: rgba(201,161,90,0.3);
+  }
+
+  *{ box-sizing: border-box; margin: 0; }
+
+  body{
+    font-family: 'Work Sans', sans-serif;
+    background:
+      radial-gradient(1000px 480px at 50% -160px, #1a1d1c, transparent),
+      var(--black);
+    color: var(--white);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-transform: uppercase;
+  }
+
+  /* ————— Cabeçalho ————— */
+  .topbar{
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 34px 28px 0;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .wordmark{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 4px;
+    color: var(--white);
+  }
+  .wordmark em{
+    font-style: normal;
+    color: var(--brass-soft);
+  }
+
+  .topbar .place{
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--brass-soft);
+  }
+
+  /* ————— Herói ————— */
+  .hero{
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 72px 28px 84px;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  @media (max-width: 900px){
+    .hero{ grid-template-columns: 1fr; gap: 48px; padding-top: 56px; }
+  }
+
+  .hero-copy .over{
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3.5px;
+    color: var(--brass-soft);
+    margin-bottom: 22px;
+  }
+
+  .hero-copy h1{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: clamp(32px, 4.3vw, 46px);
+    line-height: 1.2;
+    letter-spacing: 2px;
+    margin-bottom: 26px;
+  }
+
+  .hero-copy .lead{
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 2;
+    letter-spacing: 0.8px;
+    color: var(--white-dim);
+    max-width: 480px;
+    margin-bottom: 44px;
+  }
+
+  .divider{
+    width: 64px;
+    height: 1px;
+    background: var(--brass);
+    margin-bottom: 44px;
+  }
+
+  .step{
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: 18px;
+    padding: 24px 0;
+    border-top: 1px solid var(--line-gold);
+  }
+  .step:last-child{ border-bottom: 1px solid var(--line-gold); }
+
+  .step .num{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--brass);
+    line-height: 1;
+  }
+
+  .step .title{
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    color: var(--white);
+    margin-bottom: 9px;
+  }
+
+  .step .desc{
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.9;
+    letter-spacing: 0.6px;
+    color: var(--white-dim);
+  }
+
+  /* ————— Formulário ————— */
+  .form-card{
+    background: linear-gradient(178deg, var(--black-card) 0%, var(--black-2) 100%);
+    border-radius: 6px;
+    padding: 44px 40px 38px;
+    color: var(--white);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.7);
+    position: relative;
+  }
+
+  .form-card::before{
+    content:'';
+    position: absolute;
+    top: 12px; left: 12px; right: 12px; bottom: 12px;
+    border: 1px solid var(--line-gold);
+    border-radius: 3px;
+    pointer-events: none;
+  }
+
+  .form-inner{ position: relative; }
+
+  .form-card h2{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+
+  .form-card .form-sub{
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1.95;
+    letter-spacing: 0.8px;
+    color: var(--white-dim);
+    margin-bottom: 30px;
+  }
+
+  .section-title{
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3.5px;
+    color: var(--brass-soft);
+    margin: 30px 0 18px;
+    padding-bottom: 11px;
+    border-bottom: 1px solid var(--black-line);
+  }
+  .section-title:first-of-type{ margin-top: 0; }
+
+  .fgroup{ margin-bottom: 18px; }
+
+  .fgroup label{
+    display: block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 9px;
+  }
+
+  .fgroup label .opt{
+    font-weight: 400;
+    color: var(--white-dim);
+  }
+
+  .fgroup input,
+  .fgroup select,
+  .fgroup textarea{
+    width: 100%;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 13px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--black-line);
+    background: var(--black);
+    color: var(--white);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .fgroup select{
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23c9a15a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+
+  .fgroup select option{ background: var(--black-2); }
+
+  .fgroup input::placeholder,
+  .fgroup textarea::placeholder{ color: #565c58; text-transform: uppercase; letter-spacing: 0.8px; }
+
+  .fgroup input:focus,
+  .fgroup select:focus,
+  .fgroup textarea:focus{
+    outline: none;
+    border-color: var(--brass);
+    box-shadow: 0 0 0 3px rgba(201,161,90,0.14);
+  }
+
+  .fgroup textarea{ resize: vertical; min-height: 88px; }
+
+  .frow{ display: flex; gap: 14px; }
+  .frow .fgroup{ flex: 1; }
+
+  @media (max-width: 480px){
+    .frow{ flex-direction: column; gap: 0; }
+    .form-card{ padding: 36px 26px 30px; }
+  }
+
+  .submit-btn{
+    width: 100%;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+    font-size: 12.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--black);
+    background: var(--brass);
+    border: 1px solid var(--brass);
+    border-radius: 4px;
+    padding: 17px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.18s ease;
+  }
+  .submit-btn:hover{ background: var(--brass-soft); }
+
+  .form-note{
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.9;
+    letter-spacing: 1px;
+    color: var(--white-dim);
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  /* ————— Rodapé ————— */
+  footer{
+    border-top: 1px solid var(--line-gold);
+    padding: 30px 28px 40px;
+  }
+
+  .footer-inner{
+    max-width: 1060px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .footer-inner .note{
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.9;
+    letter-spacing: 0.8px;
+    color: var(--white-dim);
+    max-width: 580px;
+  }
+
+  .footer-inner .brand{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 4px;
+    color: var(--brass-soft);
+    white-space: nowrap;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">DESATA<em>CRED</em></div>
+  <div class="place">CATALÃO, GOIÁS</div>
+</div>
+
+<div class="hero">
+  <div class="hero-copy">
+    <div class="over">RECUPERAÇÃO DE CRÉDITO PARA COMERCIANTES</div>
+    <h1>CRÉDITO PARADO É PREJUÍZO. NÓS RECUPERAMOS PARA VOCÊ.</h1>
+    <p class="lead">A DESATACRED ATUA NA NEGOCIAÇÃO E RECUPERAÇÃO DE VALORES EM ATRASO PARA COMERCIANTES E CREDORES — ALUGUÉIS, NOTAS PROMISSÓRIAS, CONTRATOS E VENDAS A PRAZO. A REMUNERAÇÃO OCORRE EXCLUSIVAMENTE SOBRE O VALOR RECUPERADO.</p>
+
+    <div class="divider"></div>
+
+    <div class="step">
+      <div class="num">1</div>
+      <div>
+        <div class="title">ANÁLISE DO CASO</div>
+        <div class="desc">AVALIAMOS A DOCUMENTAÇÃO E O HISTÓRICO DO DÉBITO PARA DEFINIR A ESTRATÉGIA DE RECUPERAÇÃO ADEQUADA.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <div>
+        <div class="title">NEGOCIAÇÃO ESTRUTURADA</div>
+        <div class="desc">CONDUZIMOS O CONTATO COM O DEVEDOR DE FORMA PROFISSIONAL, BUSCANDO ACORDO E FORMALIZAÇÃO DO PAGAMENTO.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <div>
+        <div class="title">RECUPERAÇÃO E PRESTAÇÃO DE CONTAS</div>
+        <div class="desc">VOCÊ ACOMPANHA CADA ETAPA E SÓ HÁ REMUNERAÇÃO QUANDO O VALOR É EFETIVAMENTE RECUPERADO.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <div class="form-inner">
+      <h2>SOLICITE UMA ANÁLISE</h2>
+      <p class="form-sub">PREENCHA AS INFORMAÇÕES ABAIXO. NOSSA EQUIPE RETORNA EM ATÉ UM DIA ÚTIL COM A AVALIAÇÃO INICIAL DO SEU CASO, SEM CUSTO E SEM COMPROMISSO.</p>
+
+      <form id="lead-form">
+        <div class="section-title">SEUS DADOS</div>
+
+        <div class="fgroup">
+          <label>NOME COMPLETO OU RAZÃO SOCIAL</label>
+          <input type="text" name="credor_nome" required>
+        </div>
+
+        <div class="frow">
+          <div class="fgroup">
+            <label>TELEFONE / WHATSAPP</label>
+            <input type="tel" name="credor_whatsapp" placeholder="(64) 9 0000-0000" required>
+          </div>
+          <div class="fgroup">
+            <label>RAMO DE ATIVIDADE <span class="opt">(OPCIONAL)</span></label>
+            <input type="text" name="credor_ramo" placeholder="LOCAÇÃO, COMÉRCIO, SERVIÇOS">
+          </div>
+        </div>
+
+        <div class="section-title">SOBRE O CRÉDITO</div>
+
+        <div class="frow">
+          <div class="fgroup">
+            <label>ORIGEM DO CRÉDITO</label>
+            <select name="origem" required>
+              <option value="" disabled selected>SELECIONE</option>
+              <option>CONTRATO DE ALUGUEL</option>
+              <option>NOTA PROMISSÓRIA</option>
+              <option>VENDA A PRAZO / CREDIÁRIO</option>
+              <option>CHEQUE DEVOLVIDO</option>
+              <option>PRESTAÇÃO DE SERVIÇO</option>
+              <option>OUTRO</option>
+            </select>
+          </div>
+          <div class="fgroup">
+            <label>VALOR TOTAL EM ABERTO</label>
+            <input type="text" name="valor" placeholder="R$" inputmode="decimal" required>
+          </div>
+        </div>
+
+        <div class="frow">
+          <div class="fgroup">
+            <label>TEMPO DE ATRASO</label>
+            <select name="atraso" required>
+              <option value="" disabled selected>SELECIONE</option>
+              <option>MENOS DE 30 DIAS</option>
+              <option>1 A 3 MESES</option>
+              <option>3 A 6 MESES</option>
+              <option>6 MESES A 1 ANO</option>
+              <option>MAIS DE 1 ANO</option>
+            </select>
+          </div>
+          <div class="fgroup">
+            <label>POSSUI DOCUMENTAÇÃO?</label>
+            <select name="documentacao" required>
+              <option value="" disabled selected>SELECIONE</option>
+              <option>SIM, ASSINADA PELO DEVEDOR</option>
+              <option>SIM, PARCIAL</option>
+              <option>NÃO POSSUO</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="fgroup">
+          <label>TENTATIVAS DE COBRANÇA ANTERIORES <span class="opt">(OPCIONAL)</span></label>
+          <textarea name="historico" placeholder="DESCREVA BREVEMENTE CONTATOS OU ACORDOS ANTERIORES, SE HOUVER."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">SOLICITAR ANÁLISE DO CASO</button>
+        <div class="form-note">SUAS INFORMAÇÕES SÃO TRATADAS COM CONFIDENCIALIDADE E UTILIZADAS EXCLUSIVAMENTE PARA A AVALIAÇÃO DO CASO.</div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="note">A DESATACRED ATUA NA GESTÃO E RECUPERAÇÃO EXTRAJUDICIAL DE CRÉDITOS, POR MEIO DE NEGOCIAÇÃO DIRETA ENTRE AS PARTES.</div>
+    <div class="brand">DESATACRED</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('lead-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('FORMULÁRIO VALIDADO. O ENVIO POR E-MAIL SERÁ CONECTADO NO PRÓXIMO PASSO.');
+});
+</script>
+
+</body>
+</html>
