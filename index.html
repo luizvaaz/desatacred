@@ -497,7 +497,7 @@
           </div>
           <div class="fgroup">
             <label>VALOR TOTAL EM ABERTO</label>
-            <input type="text" name="valor" placeholder="R$" inputmode="decimal" required>
+            <input type="text" name="valor" id="campo-valor" placeholder="R$ 0,00" inputmode="numeric" required>
           </div>
         </div>
 
@@ -596,6 +596,30 @@ document.getElementById('lead-form').addEventListener('submit', function(e){
 document.getElementById('success-close').addEventListener('click', function(){
   document.getElementById('success-overlay').classList.remove('show');
 });
+
+// Máscara de moeda no campo de valor (formato R$ brasileiro)
+(function(){
+  const campo = document.getElementById('campo-valor');
+  if (!campo) return;
+
+  campo.addEventListener('input', function(){
+    // Mantém só os dígitos
+    let digitos = campo.value.replace(/\D/g, '');
+
+    if (digitos === ''){
+      campo.value = '';
+      return;
+    }
+
+    // Converte para número em centavos e formata
+    const valor = (parseInt(digitos, 10) / 100).toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+
+    campo.value = valor;
+  });
+})();
 
 // Inicializa o EmailJS separadamente, com proteção própria
 try{
