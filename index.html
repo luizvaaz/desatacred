@@ -285,6 +285,105 @@
   }
 
   /* ————— Rodapé ————— */
+  /* ————— Tela de sucesso ————— */
+  .success-overlay{
+    position: fixed;
+    inset: 0;
+    background: rgba(6,7,7,0.92);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .success-overlay.show{
+    display: flex;
+    opacity: 1;
+  }
+
+  .success-box{
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    transform: translateY(14px);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .success-overlay.show .success-box{ transform: translateY(0); }
+
+  .success-seal{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 30px;
+    position: relative;
+  }
+  .success-seal svg{ width: 100%; height: 100%; }
+
+  .seal-ring{
+    fill: none;
+    stroke: var(--brass);
+    stroke-width: 2.5;
+    stroke-dasharray: 289;
+    stroke-dashoffset: 289;
+    animation: draw-ring 0.7s ease forwards;
+  }
+  .seal-check{
+    fill: none;
+    stroke: var(--brass);
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 60;
+    stroke-dashoffset: 60;
+    animation: draw-check 0.45s ease 0.55s forwards;
+  }
+  @keyframes draw-ring{ to{ stroke-dashoffset: 0; } }
+  @keyframes draw-check{ to{ stroke-dashoffset: 0; } }
+
+  .success-box h3{
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 3px;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .success-box p{
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.95;
+    letter-spacing: 1px;
+    color: var(--white-dim);
+    margin-bottom: 34px;
+  }
+
+  .success-box .divider-gold{
+    width: 50px;
+    height: 1px;
+    background: var(--brass);
+    margin: 0 auto 34px;
+  }
+
+  .success-btn{
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 800;
+    font-size: 11.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--brass-soft);
+    background: transparent;
+    border: 1px solid var(--brass);
+    border-radius: 4px;
+    padding: 13px 28px;
+    cursor: pointer;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+  .success-btn:hover{ background: var(--brass); color: var(--black); }
+
   footer{
     border-top: 1px solid var(--line-gold);
     padding: 30px 28px 40px;
@@ -444,6 +543,21 @@
   </div>
 </footer>
 
+<div class="success-overlay" id="success-overlay">
+  <div class="success-box">
+    <div class="success-seal">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle class="seal-ring" cx="50" cy="50" r="46"/>
+        <path class="seal-check" d="M30 51 L44 65 L71 36"/>
+      </svg>
+    </div>
+    <h3>SOLICITAÇÃO ENVIADA</h3>
+    <div class="divider-gold"></div>
+    <p>RECEBEMOS OS DADOS DO SEU CASO. NOSSA EQUIPE ENTRARÁ EM CONTATO PELO WHATSAPP INFORMADO EM ATÉ UM DIA ÚTIL.</p>
+    <button class="success-btn" id="success-close">ENVIAR OUTRA SOLICITAÇÃO</button>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 // Anexa o listener PRIMEIRO, independente do EmailJS ter carregado ou não.
@@ -465,20 +579,22 @@ document.getElementById('lead-form').addEventListener('submit', function(e){
 
   emailjs.sendForm('service_w3mcmci', 'template_4asgz8t', form)
     .then(function(resposta){
-      alert('ENVIADO! Status: ' + resposta.status + ' - ' + resposta.text);
-      btn.textContent = 'ENVIADO COM SUCESSO';
       form.reset();
-      setTimeout(function(){
-        btn.disabled = false;
-        btn.textContent = textoOriginal;
-      }, 4000);
+      btn.disabled = false;
+      btn.textContent = textoOriginal;
+      document.getElementById('success-overlay').classList.add('show');
     })
     .catch(function(erro){
       console.error('Erro ao enviar:', erro);
-      alert('ERRO AO ENVIAR: ' + JSON.stringify({status: erro.status, text: erro.text, message: erro.message}));
+      alert('NÃO FOI POSSÍVEL ENVIAR NO MOMENTO. VERIFIQUE SUA CONEXÃO E TENTE NOVAMENTE.');
       btn.disabled = false;
       btn.textContent = textoOriginal;
     });
+});
+
+// Fecha a tela de sucesso
+document.getElementById('success-close').addEventListener('click', function(){
+  document.getElementById('success-overlay').classList.remove('show');
 });
 
 // Inicializa o EmailJS separadamente, com proteção própria
