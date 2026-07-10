@@ -430,7 +430,7 @@
           <textarea name="historico" placeholder="DESCREVA BREVEMENTE CONTATOS OU ACORDOS ANTERIORES, SE HOUVER."></textarea>
         </div>
 
-        <button type="submit" class="submit-btn">SOLICITAR ANÁLISE DO CASO</button>
+        <button type="submit" class="submit-btn" id="submit-btn">SOLICITAR ANÁLISE DO CASO</button>
         <div class="form-note">SUAS INFORMAÇÕES SÃO TRATADAS COM CONFIDENCIALIDADE E UTILIZADAS EXCLUSIVAMENTE PARA A AVALIAÇÃO DO CASO.</div>
       </form>
     </div>
@@ -444,10 +444,37 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
+(function(){
+  emailjs.init({ publicKey: "GZ7smCWKpzNr41BuZ" });
+})();
+
 document.getElementById('lead-form').addEventListener('submit', function(e){
   e.preventDefault();
-  alert('FORMULÁRIO VALIDADO. O ENVIO POR E-MAIL SERÁ CONECTADO NO PRÓXIMO PASSO.');
+
+  const form = e.target;
+  const btn = document.getElementById('submit-btn');
+  const textoOriginal = btn.textContent;
+
+  btn.disabled = true;
+  btn.textContent = 'ENVIANDO...';
+
+  emailjs.sendForm('service_w3mcmci', 'template_4asgz8t', form)
+    .then(function(){
+      btn.textContent = 'ENVIADO COM SUCESSO';
+      form.reset();
+      setTimeout(function(){
+        btn.disabled = false;
+        btn.textContent = textoOriginal;
+      }, 4000);
+    })
+    .catch(function(erro){
+      console.error('Erro ao enviar:', erro);
+      alert('NÃO FOI POSSÍVEL ENVIAR. TENTE NOVAMENTE OU FALE CONOSCO DIRETAMENTE.');
+      btn.disabled = false;
+      btn.textContent = textoOriginal;
+    });
 });
 </script>
 
