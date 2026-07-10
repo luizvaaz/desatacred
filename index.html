@@ -461,7 +461,8 @@ document.getElementById('lead-form').addEventListener('submit', function(e){
   btn.textContent = 'ENVIANDO...';
 
   emailjs.sendForm('service_w3mcmci', 'template_4asgz8t', form)
-    .then(function(){
+    .then(function(resposta){
+      alert('ENVIADO! Status: ' + resposta.status + ' - ' + resposta.text);
       btn.textContent = 'ENVIADO COM SUCESSO';
       form.reset();
       setTimeout(function(){
@@ -471,7 +472,7 @@ document.getElementById('lead-form').addEventListener('submit', function(e){
     })
     .catch(function(erro){
       console.error('Erro ao enviar:', erro);
-      alert('NÃO FOI POSSÍVEL ENVIAR. TENTE NOVAMENTE OU FALE CONOSCO DIRETAMENTE.');
+      alert('ERRO AO ENVIAR: ' + JSON.stringify({status: erro.status, text: erro.text, message: erro.message}));
       btn.disabled = false;
       btn.textContent = textoOriginal;
     });
