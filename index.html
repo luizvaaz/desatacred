@@ -446,16 +446,19 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-(function(){
-  emailjs.init({ publicKey: "GZ7smCWKpzNr41BuZ" });
-})();
-
+// Anexa o listener PRIMEIRO, independente do EmailJS ter carregado ou não.
+// Isso evita que o formulário caia no envio padrão do navegador (que recarrega a página).
 document.getElementById('lead-form').addEventListener('submit', function(e){
-  e.preventDefault();
+  e.preventDefault(); // sempre bloqueia o comportamento padrão, aconteça o que acontecer
 
   const form = e.target;
   const btn = document.getElementById('submit-btn');
   const textoOriginal = btn.textContent;
+
+  if (typeof emailjs === 'undefined'){
+    alert('O SERVIÇO DE ENVIO NÃO CARREGOU. VERIFIQUE SUA CONEXÃO E TENTE NOVAMENTE.');
+    return;
+  }
 
   btn.disabled = true;
   btn.textContent = 'ENVIANDO...';
@@ -477,6 +480,13 @@ document.getElementById('lead-form').addEventListener('submit', function(e){
       btn.textContent = textoOriginal;
     });
 });
+
+// Inicializa o EmailJS separadamente, com proteção própria
+try{
+  emailjs.init({ publicKey: "GZ7smCWKpzNr41BuZ" });
+}catch(e){
+  console.error('Falha ao inicializar EmailJS:', e);
+}
 </script>
 
 </body>
