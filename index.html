@@ -3,630 +3,288 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DESATACRED — RECUPERAÇÃO DE CRÉDITO</title>
+<title>Cutilagem Perfeita — Curso com Faby Cardoso</title>
+<meta name="description" content="Aprenda a técnica de cutilagem que faz suas clientes voltarem — do zero ao aperfeiçoamento, com Faby Cardoso.">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Work+Sans:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Mulish:wght@400;500;600;700;800&display=swap');
 
   :root{
-    --black: #0a0b0b;
-    --black-2: #111312;
-    --black-card: #141615;
-    --black-line: #2a2d2c;
-    --brass: #c9a15a;
-    --brass-soft: #dfc189;
-    --white: #f4f2ec;
-    --white-dim: #a9aeaa;
-    --line-gold: rgba(201,161,90,0.3);
+    --ink: #2b1620;
+    --ink-soft: #6b4a52;
+    --paper: #fbf1ec;
+    --card: #ffffff;
+    --berry: #a23b52;
+    --berry-deep: #7d2c40;
+    --gold: #b98a3e;
+    --line: rgba(43,22,32,0.12);
   }
 
-  *{ box-sizing: border-box; margin: 0; }
-
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
   body{
-    font-family: 'Work Sans', sans-serif;
-    background:
-      radial-gradient(1000px 480px at 50% -160px, #1a1d1c, transparent),
-      var(--black);
-    color: var(--white);
-    min-height: 100vh;
+    font-family: 'Mulish', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
+  }
+  h1,h2,h3{ font-family: 'Playfair Display', serif; line-height: 1.15; }
+
+  .eyebrow{
+    font-size: 12.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    color: var(--berry-deep);
+    font-weight: 700;
   }
 
-  /* ————— Cabeçalho ————— */
+  /* topbar */
   .topbar{
-    max-width: 1060px;
-    margin: 0 auto;
-    padding: 34px 28px 0;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
+    max-width: 1040px; margin: 0 auto;
+    padding: 24px 24px 0;
+    display:flex; align-items:center; justify-content:space-between;
   }
+  .wordmark{ font-family:'Playfair Display', serif; font-weight:600; font-size:20px; color: var(--berry-deep); }
+  .stars-mini{ font-size: 13px; color: var(--gold); font-weight: 700; }
 
-  .wordmark{
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;
-    font-size: 24px;
-    letter-spacing: 4px;
-    color: var(--white);
-  }
-  .wordmark em{
-    font-style: normal;
-    color: var(--brass-soft);
-  }
-
-  .topbar .place{
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
-    color: var(--brass-soft);
-  }
-
-  /* ————— Herói ————— */
+  /* hero */
   .hero{
-    max-width: 1060px;
-    margin: 0 auto;
-    padding: 72px 28px 84px;
-    display: grid;
-    grid-template-columns: 1.05fr 1fr;
-    gap: 64px;
-    align-items: start;
+    max-width: 1040px; margin: 0 auto;
+    padding: 44px 24px 30px;
+    display: grid; grid-template-columns: 1.05fr 0.95fr;
+    gap: 48px; align-items: center;
+  }
+  .hero h1{ font-size: 40px; font-weight:700; margin: 16px 0 18px; color: var(--ink); }
+  .hero h1 em{ font-style: italic; color: var(--berry); }
+  .hero p.lead{ font-size: 16.5px; color: var(--ink-soft); max-width: 48ch; margin-bottom: 24px; }
+
+  .cta-btn{
+    display: inline-flex; align-items:center; gap:10px;
+    background: var(--berry); color:#fff;
+    font-weight: 700; font-size: 15.5px;
+    padding: 16px 30px; border-radius: 40px;
+    text-decoration:none; border:none; cursor:pointer;
+    box-shadow: 0 14px 30px -12px rgba(162,59,82,0.55);
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .cta-btn:hover{ background: var(--berry-deep); transform: translateY(-1px); }
+  .cta-note{ margin-top: 12px; font-size: 12.5px; color: var(--ink-soft); }
+
+  .social-strip{
+    display:flex; align-items:center; gap: 10px;
+    margin-top: 22px; font-size: 13.5px; color: var(--ink-soft);
+  }
+  .social-strip strong{ color: var(--ink); }
+
+  /* hero visual: nail motif card */
+  .visual-card{
+    background: var(--card);
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 30px 60px -30px rgba(43,22,32,0.35);
+    border: 1px solid var(--line);
+  }
+  .nail-row{ display:flex; justify-content:center; gap: 10px; margin-bottom: 22px; }
+  .nail{
+    width: 30px; height: 46px;
+    border-radius: 15px 15px 6px 6px;
+    background: linear-gradient(180deg, #fdeee6, #f6d8c9);
+    border: 1px solid rgba(43,22,32,0.08);
+  }
+  .nail:nth-child(2){ background: linear-gradient(180deg,#f7dfe4,#eeb8c4); }
+  .nail:nth-child(4){ background: linear-gradient(180deg,#f7dfe4,#eeb8c4); }
+  .visual-quote{
+    text-align:center; font-family:'Playfair Display', serif;
+    font-style: italic; font-size: 17px; color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .visual-rating{
+    display:flex; justify-content:center; align-items:baseline; gap:8px;
+  }
+  .visual-rating .big{ font-family:'Playfair Display', serif; font-size:34px; color: var(--berry); font-weight:700; }
+  .visual-rating .small{ font-size: 13px; color: var(--ink-soft); }
+
+  /* section generic */
+  .section{ max-width: 1040px; margin: 0 auto; padding: 60px 24px; }
+  .section-head{ max-width: 60ch; margin-bottom: 34px; }
+  .section-head h2{ font-size: 28px; margin-top: 8px; }
+
+  /* pain */
+  .pain-grid{
+    display:grid; grid-template-columns: repeat(3,1fr); gap: 22px;
+  }
+  .pain-card{
+    background: var(--card); border:1px solid var(--line);
+    border-radius: 12px; padding: 24px 20px;
+  }
+  .pain-card .icon{ font-size: 22px; margin-bottom: 12px; }
+  .pain-card h3{ font-size: 16.5px; font-weight:700; font-family:'Mulish',sans-serif; margin-bottom: 8px; color: var(--berry-deep); }
+  .pain-card p{ font-size: 14px; color: var(--ink-soft); }
+
+  /* solution / benefits */
+  .benefits{ background: var(--card); border-radius: 16px; padding: 40px 36px; border: 1px solid var(--line); }
+  .benefits h2{ font-size: 26px; margin-bottom: 6px; }
+  .benefits > p{ color: var(--ink-soft); font-size: 14.5px; margin-bottom: 26px; max-width: 55ch; }
+  .benefit-list{ list-style:none; display:grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
+  .benefit-list li{
+    display:flex; gap: 10px; font-size: 14.5px; color: var(--ink);
+  }
+  .benefit-list li::before{
+    content: '✓'; color: var(--berry); font-weight: 700; flex-shrink:0;
   }
 
-  @media (max-width: 900px){
-    .hero{ grid-template-columns: 1fr; gap: 48px; padding-top: 56px; }
+  /* social proof */
+  .proof{ background: #f6e2e8; }
+  .proof-inner{ max-width: 1040px; margin:0 auto; padding: 56px 24px; text-align:center; }
+  .proof .stars{ font-size: 26px; color: var(--gold); margin-bottom: 10px; letter-spacing: 3px; }
+  .proof h2{ font-size: 26px; max-width: 44ch; margin: 0 auto 10px; }
+  .proof p{ color: var(--ink-soft); font-size: 14.5px; }
+
+  /* urgency */
+  .urgency{
+    max-width: 780px; margin: 0 auto; padding: 10px 24px 10px;
+    text-align:center;
   }
-
-  .hero-copy .over{
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 3.5px;
-    color: var(--brass-soft);
-    margin-bottom: 22px;
+  .urgency-box{
+    background: var(--ink); color: var(--paper);
+    border-radius: 14px; padding: 30px 28px;
   }
+  .urgency-box .eyebrow{ color: var(--gold); }
+  .urgency-box h3{ font-size: 21px; margin: 8px 0 10px; color: #fff; }
+  .urgency-box p{ font-size: 14px; color: rgba(251,241,236,0.8); margin-bottom: 20px; }
 
-  .hero-copy h1{
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: clamp(32px, 4.3vw, 46px);
-    line-height: 1.2;
-    letter-spacing: 2px;
-    margin-bottom: 26px;
-  }
+  /* final cta */
+  .final-cta{ text-align:center; padding: 60px 24px 90px; }
+  .final-cta h2{ font-size: 28px; max-width: 40ch; margin: 0 auto 22px; }
 
-  .hero-copy .lead{
-    font-size: 13.5px;
-    font-weight: 600;
-    line-height: 2;
-    letter-spacing: 0.8px;
-    color: var(--white-dim);
-    max-width: 480px;
-    margin-bottom: 44px;
-  }
-
-  .divider{
-    width: 64px;
-    height: 1px;
-    background: var(--brass);
-    margin-bottom: 44px;
-  }
-
-  .step{
-    display: grid;
-    grid-template-columns: 44px 1fr;
-    gap: 18px;
-    padding: 24px 0;
-    border-top: 1px solid var(--line-gold);
-  }
-  .step:last-child{ border-bottom: 1px solid var(--line-gold); }
-
-  .step .num{
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 600;
-    font-size: 30px;
-    color: var(--brass);
-    line-height: 1;
-  }
-
-  .step .title{
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 2.5px;
-    color: var(--white);
-    margin-bottom: 9px;
-  }
-
-  .step .desc{
-    font-size: 12.5px;
-    font-weight: 600;
-    line-height: 1.9;
-    letter-spacing: 0.6px;
-    color: var(--white-dim);
-  }
-
-  /* ————— Formulário ————— */
-  .form-card{
-    background: linear-gradient(178deg, var(--black-card) 0%, var(--black-2) 100%);
-    border-radius: 6px;
-    padding: 44px 40px 38px;
-    color: var(--white);
-    box-shadow: 0 30px 70px rgba(0,0,0,0.7);
-    position: relative;
-  }
-
-  .form-card::before{
-    content:'';
-    position: absolute;
-    top: 12px; left: 12px; right: 12px; bottom: 12px;
-    border: 1px solid var(--line-gold);
-    border-radius: 3px;
-    pointer-events: none;
-  }
-
-  .form-inner{ position: relative; }
-
-  .form-card h2{
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;
-    font-size: 26px;
-    letter-spacing: 4px;
-    margin-bottom: 12px;
-    color: var(--white);
-  }
-
-  .form-card .form-sub{
-    font-size: 11.5px;
-    font-weight: 600;
-    line-height: 1.95;
-    letter-spacing: 0.8px;
-    color: var(--white-dim);
-    margin-bottom: 30px;
-  }
-
-  .section-title{
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 3.5px;
-    color: var(--brass-soft);
-    margin: 30px 0 18px;
-    padding-bottom: 11px;
-    border-bottom: 1px solid var(--black-line);
-  }
-  .section-title:first-of-type{ margin-top: 0; }
-
-  .fgroup{ margin-bottom: 18px; }
-
-  .fgroup label{
-    display: block;
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--white);
-    margin-bottom: 9px;
-  }
-
-  .fgroup label .opt{
-    font-weight: 400;
-    color: var(--white-dim);
-  }
-
-  .fgroup input,
-  .fgroup select,
-  .fgroup textarea{
-    width: 100%;
-    font-family: 'Work Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    padding: 13px 14px;
-    border-radius: 4px;
-    border: 1px solid var(--black-line);
-    background: var(--black);
-    color: var(--white);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  }
-
-  .fgroup select{
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23c9a15a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-  }
-
-  .fgroup select option{ background: var(--black-2); }
-
-  .fgroup input::placeholder,
-  .fgroup textarea::placeholder{ color: #565c58; text-transform: uppercase; letter-spacing: 0.8px; }
-
-  .fgroup input:focus,
-  .fgroup select:focus,
-  .fgroup textarea:focus{
-    outline: none;
-    border-color: var(--brass);
-    box-shadow: 0 0 0 3px rgba(201,161,90,0.14);
-  }
-
-  .fgroup textarea{ resize: vertical; min-height: 88px; }
-
-  .frow{ display: flex; gap: 14px; }
-  .frow .fgroup{ flex: 1; }
-
-  @media (max-width: 480px){
-    .frow{ flex-direction: column; gap: 0; }
-    .form-card{ padding: 36px 26px 30px; }
-  }
-
-  .submit-btn{
-    width: 100%;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 800;
-    font-size: 12.5px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--black);
-    background: var(--brass);
-    border: 1px solid var(--brass);
-    border-radius: 4px;
-    padding: 17px;
-    cursor: pointer;
-    margin-top: 12px;
-    transition: background 0.18s ease;
-  }
-  .submit-btn:hover{ background: var(--brass-soft); }
-
-  .form-note{
-    font-size: 10px;
-    font-weight: 600;
-    line-height: 1.9;
-    letter-spacing: 1px;
-    color: var(--white-dim);
-    text-align: center;
-    margin-top: 16px;
-  }
-
-  /* ————— Rodapé ————— */
-  /* ————— Tela de sucesso ————— */
-  .success-overlay{
-    position: fixed;
-    inset: 0;
-    background: rgba(6,7,7,0.92);
-    backdrop-filter: blur(6px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    padding: 24px;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  .success-overlay.show{
-    display: flex;
-    opacity: 1;
-  }
-
-  .success-box{
-    max-width: 440px;
-    width: 100%;
-    text-align: center;
-    padding: 20px;
-    transform: translateY(14px);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .success-overlay.show .success-box{ transform: translateY(0); }
-
-  .success-seal{
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 30px;
-    position: relative;
-  }
-  .success-seal svg{ width: 100%; height: 100%; }
-
-  .seal-ring{
-    fill: none;
-    stroke: var(--brass);
-    stroke-width: 2.5;
-    stroke-dasharray: 289;
-    stroke-dashoffset: 289;
-    animation: draw-ring 0.7s ease forwards;
-  }
-  .seal-check{
-    fill: none;
-    stroke: var(--brass);
-    stroke-width: 4;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 60;
-    stroke-dashoffset: 60;
-    animation: draw-check 0.45s ease 0.55s forwards;
-  }
-  @keyframes draw-ring{ to{ stroke-dashoffset: 0; } }
-  @keyframes draw-check{ to{ stroke-dashoffset: 0; } }
-
-  .success-box h3{
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;
-    font-size: 30px;
-    letter-spacing: 3px;
-    color: var(--white);
-    margin-bottom: 16px;
-  }
-
-  .success-box p{
-    font-size: 12.5px;
-    font-weight: 600;
-    line-height: 1.95;
-    letter-spacing: 1px;
-    color: var(--white-dim);
-    margin-bottom: 34px;
-  }
-
-  .success-box .divider-gold{
-    width: 50px;
-    height: 1px;
-    background: var(--brass);
-    margin: 0 auto 34px;
-  }
-
-  .success-btn{
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 800;
-    font-size: 11.5px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--brass-soft);
-    background: transparent;
-    border: 1px solid var(--brass);
-    border-radius: 4px;
-    padding: 13px 28px;
-    cursor: pointer;
-    transition: background 0.18s ease, color 0.18s ease;
-  }
-  .success-btn:hover{ background: var(--brass); color: var(--black); }
-
-  footer{
-    border-top: 1px solid var(--line-gold);
-    padding: 30px 28px 40px;
-  }
-
+  footer{ border-top: 1px solid var(--line); }
   .footer-inner{
-    max-width: 1060px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 18px;
-    flex-wrap: wrap;
+    max-width: 1040px; margin:0 auto; padding: 28px 24px;
+    font-size: 12px; color: var(--ink-soft);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
   }
 
-  .footer-inner .note{
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 1.9;
-    letter-spacing: 0.8px;
-    color: var(--white-dim);
-    max-width: 580px;
-  }
-
-  .footer-inner .brand{
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;
-    font-size: 15px;
-    letter-spacing: 4px;
-    color: var(--brass-soft);
-    white-space: nowrap;
+  @media (max-width: 860px){
+    .hero{ grid-template-columns: 1fr; padding-top: 30px; }
+    .hero h1{ font-size: 30px; }
+    .pain-grid{ grid-template-columns: 1fr; }
+    .benefit-list{ grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="wordmark">DESATA<em>CRED</em></div>
-  <div class="place">CATALÃO, GOIÁS</div>
+  <div class="wordmark">cutilagem perfeita</div>
+  <div class="stars-mini">★★★★★ 4.9/5</div>
 </div>
 
 <div class="hero">
-  <div class="hero-copy">
-    <div class="over">RECUPERAÇÃO DE CRÉDITO PARA COMERCIANTES</div>
-    <h1>CRÉDITO PARADO É PREJUÍZO. NÓS RECUPERAMOS PARA VOCÊ.</h1>
-    <p class="lead">A DESATACRED ATUA NA NEGOCIAÇÃO E RECUPERAÇÃO DE VALORES EM ATRASO PARA COMERCIANTES E CREDORES — ALUGUÉIS, NOTAS PROMISSÓRIAS, CONTRATOS E VENDAS A PRAZO. A REMUNERAÇÃO OCORRE EXCLUSIVAMENTE SOBRE O VALOR RECUPERADO.</p>
-
-    <div class="divider"></div>
-
-    <div class="step">
-      <div class="num">1</div>
-      <div>
-        <div class="title">ANÁLISE DO CASO</div>
-        <div class="desc">AVALIAMOS A DOCUMENTAÇÃO E O HISTÓRICO DO DÉBITO PARA DEFINIR A ESTRATÉGIA DE RECUPERAÇÃO ADEQUADA.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="num">2</div>
-      <div>
-        <div class="title">NEGOCIAÇÃO ESTRUTURADA</div>
-        <div class="desc">CONDUZIMOS O CONTATO COM O DEVEDOR DE FORMA PROFISSIONAL, BUSCANDO ACORDO E FORMALIZAÇÃO DO PAGAMENTO.</div>
-      </div>
-    </div>
-    <div class="step">
-      <div class="num">3</div>
-      <div>
-        <div class="title">RECUPERAÇÃO E PRESTAÇÃO DE CONTAS</div>
-        <div class="desc">VOCÊ ACOMPANHA CADA ETAPA E SÓ HÁ REMUNERAÇÃO QUANDO O VALOR É EFETIVAMENTE RECUPERADO.</div>
-      </div>
-    </div>
+  <div>
+    <div class="eyebrow">CURSO ONLINE · FABY CARDOSO</div>
+    <h1>Sua técnica de cutilagem pode ser o motivo das clientes <em>não voltarem</em></h1>
+    <p class="lead">Aprenda o passo a passo completo — da preparação das mãos à cutilagem fundinha, sem medo de machucar e sem insegurança na hora de atender.</p>
+    <a href="#" class="cta-btn" id="cta-principal">Quero aprender com a Faby →</a>
+    <div class="cta-note">Acesso imediato · Por apenas R$ 99,00</div>
+    <div class="social-strip"><strong>5.557 alunas</strong> já avaliaram o curso com nota média 4.9</div>
   </div>
 
-  <div class="form-card">
-    <div class="form-inner">
-      <h2>SOLICITE UMA ANÁLISE</h2>
-      <p class="form-sub">PREENCHA AS INFORMAÇÕES ABAIXO. NOSSA EQUIPE RETORNA EM ATÉ UM DIA ÚTIL COM A AVALIAÇÃO INICIAL DO SEU CASO, SEM CUSTO E SEM COMPROMISSO.</p>
-
-      <form id="lead-form">
-        <div class="section-title">SEUS DADOS</div>
-
-        <div class="fgroup">
-          <label>NOME COMPLETO OU RAZÃO SOCIAL</label>
-          <input type="text" name="credor_nome" required>
-        </div>
-
-        <div class="frow">
-          <div class="fgroup">
-            <label>TELEFONE / WHATSAPP</label>
-            <input type="tel" name="credor_whatsapp" placeholder="(64) 9 0000-0000" required>
-          </div>
-          <div class="fgroup">
-            <label>RAMO DE ATIVIDADE <span class="opt">(OPCIONAL)</span></label>
-            <input type="text" name="credor_ramo" placeholder="LOCAÇÃO, COMÉRCIO, SERVIÇOS">
-          </div>
-        </div>
-
-        <div class="section-title">SOBRE O CRÉDITO</div>
-
-        <div class="frow">
-          <div class="fgroup">
-            <label>ORIGEM DO CRÉDITO</label>
-            <select name="origem" required>
-              <option value="" disabled selected>SELECIONE</option>
-              <option>CONTRATO DE ALUGUEL</option>
-              <option>NOTA PROMISSÓRIA</option>
-              <option>VENDA A PRAZO / CREDIÁRIO</option>
-              <option>CHEQUE DEVOLVIDO</option>
-              <option>PRESTAÇÃO DE SERVIÇO</option>
-              <option>OUTRO</option>
-            </select>
-          </div>
-          <div class="fgroup">
-            <label>VALOR TOTAL EM ABERTO</label>
-            <input type="text" name="valor" id="campo-valor" placeholder="R$ 0,00" inputmode="numeric" required>
-          </div>
-        </div>
-
-        <div class="frow">
-          <div class="fgroup">
-            <label>TEMPO DE ATRASO</label>
-            <select name="atraso" required>
-              <option value="" disabled selected>SELECIONE</option>
-              <option>MENOS DE 30 DIAS</option>
-              <option>1 A 3 MESES</option>
-              <option>3 A 6 MESES</option>
-              <option>6 MESES A 1 ANO</option>
-              <option>MAIS DE 1 ANO</option>
-            </select>
-          </div>
-          <div class="fgroup">
-            <label>POSSUI DOCUMENTAÇÃO?</label>
-            <select name="documentacao" required>
-              <option value="" disabled selected>SELECIONE</option>
-              <option>SIM, ASSINADA PELO DEVEDOR</option>
-              <option>SIM, PARCIAL</option>
-              <option>NÃO POSSUO</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="fgroup">
-          <label>TENTATIVAS DE COBRANÇA ANTERIORES <span class="opt">(OPCIONAL)</span></label>
-          <textarea name="historico" placeholder="DESCREVA BREVEMENTE CONTATOS OU ACORDOS ANTERIORES, SE HOUVER."></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn" id="submit-btn">SOLICITAR ANÁLISE DO CASO</button>
-        <div class="form-note">SUAS INFORMAÇÕES SÃO TRATADAS COM CONFIDENCIALIDADE E UTILIZADAS EXCLUSIVAMENTE PARA A AVALIAÇÃO DO CASO.</div>
-      </form>
+  <div class="visual-card">
+    <div class="nail-row">
+      <div class="nail"></div><div class="nail"></div><div class="nail"></div><div class="nail"></div><div class="nail"></div>
+    </div>
+    <div class="visual-rating">
+      <span class="big">4.9</span>
+      <span class="small">/5 · 5.557 avaliações</span>
     </div>
   </div>
+</div>
+
+<div class="section">
+  <div class="section-head">
+    <div class="eyebrow">VOCÊ SE RECONHECE AQUI?</div>
+    <h2>As três travas mais comuns de quem trabalha com manicure</h2>
+  </div>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="icon">✋</div>
+      <h3>Medo de machucar a cliente</h3>
+      <p>A insegurança na hora de cutilar faz o procedimento demorar mais e a cliente perceber a hesitação.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">📉</div>
+      <h3>Poucas clientes fixas</h3>
+      <p>Sem uma técnica que realmente entrega resultado, fica difícil fidelizar quem já passou pela cadeira.</p>
+    </div>
+    <div class="pain-card">
+      <div class="icon">🎓</div>
+      <h3>Aprendizado incompleto</h3>
+      <p>Vídeos soltos na internet não substituem um passo a passo estruturado, do básico ao avançado.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:0;">
+  <div class="benefits">
+    <div class="eyebrow">O QUE VOCÊ APRENDE</div>
+    <h2>Do zero ao aperfeiçoamento, em módulos práticos</h2>
+    <p>Um curso pensado tanto para quem está começando quanto para quem já atende e quer elevar o padrão do trabalho.</p>
+    <ul class="benefit-list">
+      <li>Preparação correta das mãos e dos pés</li>
+      <li>Lixamento e polimento da unha</li>
+      <li>Cutilagem perfeita, fundinha e corte bordado</li>
+      <li>Unhas francesinhas simples e formato sorriso</li>
+      <li>Decorações de unha: degradê e gravatinha</li>
+      <li>Esmaltação nude sem manchar</li>
+      <li>Como remover o borrado corretamente</li>
+      <li>Aplicação de adesivos artesanais</li>
+      <li>Esfoliação dos pés</li>
+      <li>Conteúdos complementares de aperfeiçoamento</li>
+    </ul>
+  </div>
+</div>
+
+<div class="proof">
+  <div class="proof-inner">
+    <div class="stars">★★★★★</div>
+    <h2>Mais de 5.500 alunas já passaram pelo curso</h2>
+    <p>Nota média 4.9 de 5 — alunas destacam a didática da Faby Cardoso e a facilidade de acompanhar o passo a passo, mesmo começando do zero.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="urgency">
+    <div class="urgency-box">
+      <div class="eyebrow">CONDIÇÃO ESPECIAL</div>
+      <h3>O valor de acesso pode mudar em breve</h3>
+      <p>Cursos com procura alta costumam reajustar o investimento periodicamente. Garanta seu acesso no valor atual.</p>
+      <a href="#" class="cta-btn" id="cta-urgencia">Garantir minha vaga agora →</a>
+    </div>
+  </div>
+</div>
+
+<div class="final-cta">
+  <div class="eyebrow">PRONTA PARA SE ESPECIALIZAR?</div>
+  <h2>Sua próxima cliente pode ser a primeira a notar a diferença</h2>
+  <a href="#" class="cta-btn" id="cta-final">Acessar o curso da Faby Cardoso →</a>
+  <div class="cta-note">Acesso pela plataforma Hotmart · R$ 99,00</div>
 </div>
 
 <footer>
   <div class="footer-inner">
-    <div class="note">A DESATACRED ATUA NA GESTÃO E RECUPERAÇÃO EXTRAJUDICIAL DE CRÉDITOS, POR MEIO DE NEGOCIAÇÃO DIRETA ENTRE AS PARTES.</div>
-    <div class="brand">DESATACRED</div>
+    <div>cutilagem perfeita — conteúdo de divulgação independente.</div>
+    <div>Este curso é comercializado na plataforma Hotmart. Resultados podem variar de pessoa para pessoa.</div>
   </div>
 </footer>
 
-<div class="success-overlay" id="success-overlay">
-  <div class="success-box">
-    <div class="success-seal">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle class="seal-ring" cx="50" cy="50" r="46"/>
-        <path class="seal-check" d="M30 51 L44 65 L71 36"/>
-      </svg>
-    </div>
-    <h3>SOLICITAÇÃO ENVIADA</h3>
-    <div class="divider-gold"></div>
-    <p>RECEBEMOS OS DADOS DO SEU CASO. NOSSA EQUIPE ENTRARÁ EM CONTATO PELO WHATSAPP INFORMADO EM ATÉ UM DIA ÚTIL.</p>
-    <button class="success-btn" id="success-close">CONCLUÍDO</button>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
-// Anexa o listener PRIMEIRO, independente do EmailJS ter carregado ou não.
-// Isso evita que o formulário caia no envio padrão do navegador (que recarrega a página).
-document.getElementById('lead-form').addEventListener('submit', function(e){
-  e.preventDefault(); // sempre bloqueia o comportamento padrão, aconteça o que acontecer
-
-  const form = e.target;
-  const btn = document.getElementById('submit-btn');
-  const textoOriginal = btn.textContent;
-
-  if (typeof emailjs === 'undefined'){
-    alert('O SERVIÇO DE ENVIO NÃO CARREGOU. VERIFIQUE SUA CONEXÃO E TENTE NOVAMENTE.');
-    return;
-  }
-
-  btn.disabled = true;
-  btn.textContent = 'ENVIANDO...';
-
-  emailjs.sendForm('service_w3mcmci', 'template_4asgz8t', form)
-    .then(function(resposta){
-      form.reset();
-      btn.disabled = false;
-      btn.textContent = textoOriginal;
-      document.getElementById('success-overlay').classList.add('show');
-    })
-    .catch(function(erro){
-      console.error('Erro ao enviar:', erro);
-      alert('NÃO FOI POSSÍVEL ENVIAR NO MOMENTO. VERIFIQUE SUA CONEXÃO E TENTE NOVAMENTE.');
-      btn.disabled = false;
-      btn.textContent = textoOriginal;
-    });
+// Link de afiliado — troque "LINK_AFILIADO_AQUI" pelo seu link real da Hotmart
+const linkAfiliado = "LINK_AFILIADO_AQUI";
+document.querySelectorAll('#cta-principal, #cta-urgencia, #cta-final').forEach(function(btn){
+  btn.setAttribute('href', linkAfiliado);
+  btn.setAttribute('target', '_blank');
+  btn.setAttribute('rel', 'noopener');
 });
-
-// Fecha a tela de sucesso
-document.getElementById('success-close').addEventListener('click', function(){
-  document.getElementById('success-overlay').classList.remove('show');
-});
-
-// Máscara de moeda no campo de valor (formato R$ brasileiro)
-(function(){
-  const campo = document.getElementById('campo-valor');
-  if (!campo) return;
-
-  campo.addEventListener('input', function(){
-    // Mantém só os dígitos
-    let digitos = campo.value.replace(/\D/g, '');
-
-    if (digitos === ''){
-      campo.value = '';
-      return;
-    }
-
-    // Converte para número em centavos e formata
-    const valor = (parseInt(digitos, 10) / 100).toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    });
-
-    campo.value = valor;
-  });
-})();
-
-// Inicializa o EmailJS separadamente, com proteção própria
-try{
-  emailjs.init({ publicKey: "GZ7smCWKpzNr41BuZ" });
-}catch(e){
-  console.error('Falha ao inicializar EmailJS:', e);
-}
 </script>
 
 </body>
