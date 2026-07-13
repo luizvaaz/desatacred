@@ -84,15 +84,32 @@
     box-shadow: 0 30px 60px -30px rgba(43,22,32,0.35);
     border: 1px solid var(--line);
   }
-  .nail-row{ display:flex; justify-content:center; gap: 10px; margin-bottom: 22px; }
-  .nail{
-    width: 30px; height: 46px;
-    border-radius: 15px 15px 6px 6px;
-    background: linear-gradient(180deg, #fdeee6, #f6d8c9);
-    border: 1px solid rgba(43,22,32,0.08);
+  .hero-img{
+    width:100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    display:block;
   }
-  .nail:nth-child(2){ background: linear-gradient(180deg,#f7dfe4,#eeb8c4); }
-  .nail:nth-child(4){ background: linear-gradient(180deg,#f7dfe4,#eeb8c4); }
+  .gallery{
+    display:grid; grid-template-columns:1fr 1fr; gap:22px;
+    max-width:640px; margin:0 auto;
+  }
+  .gallery figure{ margin:0; }
+  .gallery-img{
+    width:100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    display:block;
+    border: 1px solid var(--line);
+  }
+  .gallery figcaption{
+    text-align:center; font-size:12.5px; color: var(--ink-soft);
+    margin-top:8px; font-weight:600; letter-spacing:0.3px;
+  }
   .visual-quote{
     text-align:center; font-family:'Playfair Display', serif;
     font-style: italic; font-size: 17px; color: var(--ink);
@@ -190,7 +207,7 @@
   </div>
 
   <div class="visual-card">
-    <img src="assets/banner3.jpg" alt="Curso de cutilagem Faby Cardoso — antes e depois" style="width:100%; border-radius:10px; display:block; margin-bottom:18px;">
+    <img src="assets/banner3.jpg" alt="Curso de cutilagem Faby Cardoso — antes e depois" class="hero-img" style="margin-bottom:18px;">
     <div class="visual-rating">
       <span class="big">4.9</span>
       <span class="small">/5 · 5.557 avaliações</span>
@@ -262,9 +279,15 @@
 </div>
 
 <div class="section" style="padding-top:0; padding-bottom:20px;">
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:640px; margin:0 auto;">
-    <img src="assets/banner1.jpg" alt="Aprenda técnicas de cutícula com Faby Cardoso" style="width:100%; border-radius:10px;">
-    <img src="assets/banner2.jpg" alt="Curso Manicure e Pedicure com Faby Cardoso" style="width:100%; border-radius:10px;">
+  <div class="gallery">
+    <figure>
+      <img src="assets/banner1.jpg" alt="Técnica de cutícula aplicada na unha" class="gallery-img">
+      <figcaption>Técnica de cutícula na prática</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/banner2.jpg" alt="Antes e depois de unha tratada no curso" class="gallery-img">
+      <figcaption>Antes e depois</figcaption>
+    </figure>
   </div>
 </div>
 
